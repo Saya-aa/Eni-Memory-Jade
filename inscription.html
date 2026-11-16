@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inscription</title>
+  </head>
+  <body>
+    <h1>MEMORY GAME</h1>
+    <!--name obligé pour JavaScript-->
+    <!--patern: [A-Za-Z] {3,} [demande un alphabet] {demande lettre min}-->
+    <!--METTRE ACTION-->
+    <nav>
+      <a href="index.html">Accueil</a>
+      <a href="inscription.html">S'inscrire</a>
+      <a href="connection.html">Se connecter</a>
+      <a href="profil.html">Profil</a>
+      <a href="jouer.html">Jouer</a>
+    </nav>
+    <fieldset>
+      <legend>Inscrivez-vous.</legend>
+      <form action="" method="get">
+        <label for="nameUser">Nom d'utilisateur*</label>
+        <br />
+        <input
+          id="nameUser"
+          name="nameUser"
+          title="Entrez votre nom d'utilisateur"
+          type="text"
+          placeholder="3 caractères minimum"
+          pattern="{3,}"
+          required
+        />
+        <br />
+
+        <label for="email">Entrez votre email*</label>
+        <br />
+        <input
+          id="email"
+          name="email"
+          title="Renseigner votre adresse e-mail"
+          type="email"
+          placeholder="exemple@email.fr"
+          pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"
+          required
+        />
+        <br />
+        <label for="mdp">Mot de passe*</label>
+        <br />
+        <input
+          id="mdp"
+          name="mdp"
+          title="Renseigner votre mot de passe"
+          placeholder="Votre mot de passe"
+          type="password"
+          required
+          pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{6,}"
+        />
+        <button type="button" name="buttonMdp">Afficher</button>
+        <ul>
+          <li>Ne doit pas contenir d'espaces</li>
+          <li>Doit contenir au moins une majuscule</li>
+          <li>Doit contenir au moins une minuscule</li>
+          <li>Doit contenir au moins un chiffre</li>
+          <li>Doit contenir au moins un caractère spécial</li>
+          <li>Doit être faire minimum 6 caractères</li>
+        </ul>
+        <br />
+        <label for="mdp">Confirmez votre de passe*</label>
+        <br />
+        <input
+          id="mdp"
+          name="mdp"
+          title="Renseigner votre mot de passe"
+          placeholder="Votre mot de passe"
+          type="password"
+          required
+          pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{6,}"
+        />
+        <br />
+        <label>Change votre photo de profil</label>
+        <!-- DANS GESTION PROFIL-->
+        <br />
+        <input
+          type="file"
+          id="photoDP"
+          name="photoDP"
+          accept=".jpg, .jpeg, .png"
+        />
+        <br />
+        <label for="date">Date de naissance</label>
+        <br />
+        <!--METTRE VALEUR MAX AUJOURDHUI POUR DATE DE NAISSANCE-->
+        <input
+          type="date"
+          id="date"
+          name="date"
+          title="Vous devez être majeur pour vous inscrire"
+          min="1920-01-01"
+          max="2027-01-01"
+          value=""
+        />
+        <br />
+        <button type="submit">Envoyer</button>
+      </form>
+      <p>* Champ obligatoire</p>
+    </fieldset>
+  </body>
+</html>

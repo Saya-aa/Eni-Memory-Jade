@@ -7,21 +7,21 @@
     <link rel="stylesheet" href="styleForm.css" />
   </head>
   <body>
+    <h1>MEMORY GAME</h1>
+    <!--name obligé pour JavaScript-->
+    <!--METTRE ACTION-->
     <nav>
       <a href="index.html">Accueil</a>
       <a href="inscription.html">S'inscrire</a>
       <a href="connection.html">Se connecter</a>
-      <a href="#profil">Profil</a>
-      <a href="#jouer">Jouer</a>
+      <a href="profil.html">Profil</a>
+      <a href="jouer.html">Jouer</a>
     </nav>
     <main>
       <div>
-        <h2>Formulaire de connexion</h2>
+        <h2>Connexion</h2>
         <label for="signIn">Pas encore de compte ?</label>
-        <!--FAIRE LIEN CREER COMPTE-->
-        <!--name obligé pour JavaScript-->
-        <!--patern: [A-Za-Z] {3,} [demande un alphabet] {demande lettre min}-->
-        <button id="signIn" name="signIn"><a href=""></a>Créer un compte</button>
+        <button id="signIn" name="signIn"><a href="inscription.html">Créer un compte</a></button>
         <fieldset>
           <legend>Accès à mon compte</legend>
           <form action="" method="get">
@@ -53,57 +53,7 @@
             <button>Se connecter</button>
             <button>Mot de passe oublié ?</button>
           </form>
-        </fieldset>
-        <hr />
-
-        <h2>Formulaire d'inscription</h2>
-        <fieldset>
-          <legend>Créer votre compte</legend>
-          <form action="" method="get">
-            <label>Change votre photo de profil :</label> <!-- DANS GESTION PROFIL-->
-            <input
-              type="file"
-              id="photoDP"
-              name="photoDP"
-              accept=".jpg, .jpeg, .png"
-            />
-            <br />
-            <label for="date">Date de naissance</label>
-            <input
-              type="date"
-              id="date"
-              name="date"
-              title="Vous devez être majeur pour vous inscrire"
-              min="1999-01-01"
-              max="2030-01-01"
-              value=""
-            />
-            <br />
-            <label for="email">Email* :</label>
-            <input
-              id="email"
-              name="email"
-              title="Renseigner votre adresse e-mail"
-              type="email"
-              placeholder="exemple@email.fr"
-              required
-            />
-            <br />
-            <label for="mdp">Mot de passe* :</label>
-            <input
-              id="mdp"
-              name="mdp"
-              title="Renseigner votre mot de passe"
-              type="password"
-              required
-              minlength="8"
-            />
-            <button type="button" name="buttonMdp">Afficher</button>
-            <br />
-            <button type="submit">Envoyer</button>
-          </form>
-          <p>* Champ obligatoire</p>
-        </fieldset>
+        </fieldset>       
     </main>
   </body>
 </html>

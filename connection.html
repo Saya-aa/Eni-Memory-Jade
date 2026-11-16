@@ -7,17 +7,21 @@
     <link rel="stylesheet" href="styleForm.css" />
   </head>
   <body>
-    <button>
-      <a href="">Retour à l'accueil</a>
-    </button>
+    <nav>
+      <a href="index.html">Accueil</a>
+      <a href="inscription.html">S'inscrire</a>
+      <a href="connection.html">Se connecter</a>
+      <a href="#profil">Profil</a>
+      <a href="#jouer">Jouer</a>
+    </nav>
     <main>
-      <div class="display">
+      <div>
         <h2>Formulaire de connexion</h2>
         <label for="signIn">Pas encore de compte ?</label>
         <!--FAIRE LIEN CREER COMPTE-->
         <!--name obligé pour JavaScript-->
         <!--patern: [A-Za-Z] {3,} [demande un alphabet] {demande lettre min}-->
-        <button id="signIn" name="signIn">Créer un compte</button>
+        <button id="signIn" name="signIn"><a href=""></a>Créer un compte</button>
         <fieldset>
           <legend>Accès à mon compte</legend>
           <form action="" method="get">
@@ -56,7 +60,7 @@
         <fieldset>
           <legend>Créer votre compte</legend>
           <form action="" method="get">
-            <label>Change votre photo de profil :</label>
+            <label>Change votre photo de profil :</label> <!-- DANS GESTION PROFIL-->
             <input
               type="file"
               id="photoDP"

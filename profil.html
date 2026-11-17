@@ -20,15 +20,84 @@
     <h2>PROFIL</h2>
     <!--Liste information user + boutton modifier ??????-->
     <!--liste partie jouer-->
+    <div class="blackBox">
+      <fieldset>
+        <label>Modifier votre photo de profil </label>
+        <input
+          type="file"
+          id="photoDP"
+          name="photoDP"
+          accept=".jpg, .jpeg, .png"
+        />
+        <br />
+        <label for="nameUser">Nom d'utilisateur </label>
+        <input
+          id="nameUser"
+          name="nameUser"
+          title="Entrez votre nom d'utilisateur"
+          type="text"
+          placeholder="3 caractères minimum"
+          pattern="^[A-Za-zÀ-ÖØ-öø-ÿ0-9]+${3,}"
+          required
+        />
+        <br />
 
-    <fieldset class="blackBox">
-      <label>Modifier votre photo de profil :</label>
-      <input
-        type="file"
-        id="photoDP"
-        name="photoDP"
-        accept=".jpg, .jpeg, .png"
-      />
-    </fieldset>
+        <label for="email">Email</label>
+        <br />
+        <input
+          id="email"
+          name="email"
+          title="Votre adresse e-mail"
+          type="email"
+          placeholder="exemple@email.fr"
+          pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"
+          required
+        />
+        <br />
+
+        <p>Choix du Memory</p>
+        <select>
+          <option value="">--Choisir memory--</option>
+          <option value=""></option>
+          <option value=""></option>
+          <option value=""></option>
+          <option value=""></option>
+          <option value=""></option>
+          <option value=""></option>
+          <option value=""></option>
+          <option value=""></option>
+        </select>
+        <img /><!--img de l'option choisis-->
+
+        <p>Taille du Memory</p>
+        <select>
+          <option value="">--Choisir taille--</option>
+          <option value="">4*3</option>
+          <option value="">8*6</option>
+          <option value="">16*12</option>
+        </select>
+        <br />
+        <button type="submit">Enregistrez Option</button>
+      </fieldset>
+      <h2>Derniers meilleurs scores :</h2>
+      <!--TD par partie joué ou jSON ???-->
+      <table>
+        <tr>
+          Pseudo
+        </tr>
+        <tr>
+          Score
+        </tr>
+        <tr>
+          Taille
+        </tr>
+        <tr>
+          Choix Memory
+        </tr>
+        <tr>
+          Date
+        </tr>
+      </table>
+    </div>
   </body>
 </html>

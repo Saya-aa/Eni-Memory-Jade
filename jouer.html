@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Memory</title>
     <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+    <script
+      src="https://code.jquery.com/jquery-4.0.0.min.js"
+      integrity="sha256-OaVG6prZf4v69dPg6PhVattBXkcOWQB62pdZ3ORyrao="
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
     <div class="entete">
@@ -19,22 +25,91 @@
     </div>
     <!--faire un bouton regle ?? pop over?-->
     <button>Règles</button>
+    <button id="jouer">Jouer</button>
+    <!--lance le random-->
     <div class="blackBox">
+      <h2>Derniers meilleurs scores :</h2>
+      <!--TD par partie joué ou jSON ???-->
       <table>
         <tr>
-          <td><img src="ressources/question.svg" alt="carte caché" />1</td>
-          <td><img src="ressources/question.svg" alt="carte caché" />2</td>
-          <td><img src="ressources/question.svg" alt="carte caché" />3</td>
+          Pseudo
         </tr>
         <tr>
-          <td><img src="ressources/question.svg" alt="carte caché" />4</td>
-          <td><img src="ressources/question.svg" alt="carte caché" />5</td>
-          <td><img src="ressources/question.svg" alt="carte caché" />6</td>
+          Score
         </tr>
         <tr>
-          <td><img src="ressources/question.svg" alt="carte caché" />7</td>
-          <td><img src="ressources/question.svg" alt="carte caché" />8</td>
-          <td><img src="ressources/question.svg" alt="carte caché" />9</td>
+          Taille
+        </tr>
+        <tr>
+          Choix Memory
+        </tr>
+        <tr>
+          Date
+        </tr>
+      </table>
+      <div id="textJeu">
+        <p>
+          Tentez de gagner avec le moins d'essais possible.<br />Appuyez sur
+          la<strong> barre d'espace </strong>pour relancer le jeu.
+        </p>
+      </div>
+      <p id="compteur">Nombre de coups : 0</p>
+      <table>
+        <tr>
+          <td class="carte" id="case1">
+            <img src="ressources/question.svg" alt="carte caché" class="img" />1
+          </td>
+          <td class="carte" id="case2">
+            <img src="ressources/question.svg" alt="carte caché" class="img" />2
+          </td>
+          <td class="carte" id="case3">
+            <img src="ressources/question.svg" alt="carte caché" class="img" />3
+          </td>
+        </tr>
+        <tr>
+          <td class="carte" id="case4">
+            <img src="ressources/question.svg" alt="carte caché" class="img" />4
+          </td>
+          <td class="carte" id="case5">
+            <img src="ressources/question.svg" alt="carte caché" class="img" />5
+          </td>
+          <td class="carte" id="case6">
+            <img src="ressources/question.svg" alt="carte caché" class="img" />6
+          </td>
+        </tr>
+        <tr>
+          <td class="carte" id="case7">
+            <img src="ressources/question.svg" alt="carte caché" class="img" />7
+          </td>
+          <td class="carte" id="case8">
+            <img src="ressources/question.svg" alt="carte caché" class="img" />8
+          </td>
+          <td class="carte" id="case9">
+            <img src="ressources/question.svg" alt="carte caché" class="img" />9
+          </td>
+        </tr>
+        <tr>
+          <td class="carte" id="case10">
+            <img
+              src="ressources/question.svg"
+              alt="carte caché"
+              class="img"
+            />10
+          </td>
+          <td class="carte" id="case11">
+            <img
+              src="ressources/question.svg"
+              alt="carte caché"
+              class="img"
+            />11
+          </td>
+          <td class="carte" id="case12">
+            <img
+              src="ressources/question.svg"
+              alt="carte caché"
+              class="img"
+            />12
+          </td>
         </tr>
       </table>
     </div>

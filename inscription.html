@@ -41,7 +41,7 @@
         <input
           id="email"
           name="email"
-          title="Renseigner votre adresse e-mail"
+          title="Votre adresse e-mail"
           type="email"
           placeholder="exemple@email.fr"
           pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"
@@ -60,51 +60,24 @@
           pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{6,}"
         />
         <button type="button" name="buttonMdp">Afficher</button>
-        <ul>
-          <li>Ne doit pas contenir d'espaces</li>
-          <li>Doit contenir au moins une majuscule</li>
-          <li>Doit contenir au moins une minuscule</li>
-          <li>Doit contenir au moins un chiffre</li>
-          <li>Doit contenir au moins un caractère spécial</li>
-          <li>Doit être faire minimum 6 caractères</li>
-        </ul>
-        <br />
+        <p>
+          Pas d'espace. Au moins un symbole, un chiffre, ainsi que 6 caractères
+          minimum.
+        </p>
         <label for="mdp">Confirmez votre de passe*</label>
         <br />
         <input
           id="mdp"
           name="mdp"
-          title="Renseigner votre mot de passe"
-          placeholder="Votre mot de passe"
+          title="Confirmez votre mot de passe"
+          placeholder="Confirmez votre  mot de passe"
           type="password"
           required
           pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{6,}"
         />
         <br />
-        <label>Change votre photo de profil</label>
-        <!-- DANS GESTION PROFIL-->
-        <br />
-        <input
-          type="file"
-          id="photoDP"
-          name="photoDP"
-          accept=".jpg, .jpeg, .png"
-        />
-        <br />
-        <label for="date">Date de naissance</label>
-        <br />
-        <!--METTRE VALEUR MAX AUJOURDHUI POUR DATE DE NAISSANCE-->
-        <input
-          type="date"
-          id="date"
-          name="date"
-          title="Vous devez être majeur pour vous inscrire"
-          min="1920-01-01"
-          max="2027-01-01"
-          value=""
-        />
-        <br />
-        <button type="submit">Envoyer</button>
+        <button type="submit">Création du compte</button>
+        <button type="reset">Annuler</button>
       </form>
       <p>* Champ obligatoire</p>
     </fieldset>

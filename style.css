@@ -67,3 +67,12 @@ legend {
   text-align: center;
   font-size: 40px;
 }
+
+td {
+  height: 15vh;
+  width: 15vh;
+  background-color: rgb(32, 32, 32);
+  text-align: center;
+  border: 1px solid rgba(230, 154, 48, 1);
+  cursor: pointer;
+}

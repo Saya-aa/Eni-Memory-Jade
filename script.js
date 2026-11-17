@@ -73,22 +73,71 @@ let compteurCoup = 0;
 const textVictoire = document.createElement("p");
 const textJeu = document.getElementById("textJeu");
 
-$("td").on("click", function () {
-  $(this).find("img").attr("src", imgPomme.src);
-  console.log("Carte retournée");
-  compteur++; //COMPTER PAR PAIRE ?
-  compteurCoup++;
-  $("#compteur").text("Nombre de coups :" + compteurCoup);
-  console.log(compteur);
-  if (compteur >= 12) {
-    textVictoire.textContent = "Bravo ! Vous avez gagné !";
-    textJeu.appendChild(textVictoire);
+//----------------------
+//Function generer tablo
+function generateTable(colGrille, rowGrille) {
+  // crée un élément <table> et un élément <tbody>
+  const grilleJeu = document.getElementById("grille");
+  const tbl = document.createElement("table");
+  const tblBody = document.createElement("tbody");
+
+  // création de toutes les cellules
+  for (let i = 0; i < rowGrille; i++) {
+    // crée une ligne de tableau
+    const row = document.createElement("tr");
+
+    for (let j = 0; j < colGrille; j++) {
+      // Crée un élément <td> et un nœud texte, place le texte
+      // dans le <td>, puis place le <td> à la fin de la ligne
+      const cell = document.createElement("td");
+
+      id = 1;
+      for (let idTd = 1; idTd < j; idTd++) {
+        id++;
+        cell.id = id;
+      }
+
+      const cellImg = new Image();
+      cellImg.src = "ressources/question.svg";
+      cellImg.alt = "carte caché";
+
+      cell.appendChild(cellImg);
+
+      row.appendChild(cell);
+    }
+
+    // ajoute la ligne à la fin du corps du tableau
+    tblBody.appendChild(row);
   }
-});
+
+  // place le <tbody> dans le <table>
+  tbl.appendChild(tblBody);
+  // ajoute <table> dans <div grilleJeu>
+  grilleJeu.appendChild(tbl);
+}
 
 //quand click jouer
 // random [2] parmi img
 
+const colGrille = 3;
+const rowGrille = 4;
+
 $("#jouer").on("click", function () {
   console.log("coucou");
+  generateTable(colGrille, rowGrille);
+  $("td").on("click", function () {
+    $(this).find("img").attr("src", imgPomme.src);
+    console.log("Carte retournée");
+    compteur++; //COMPTER PAR PAIRE ?
+    compteurCoup++;
+    $("#compteur").text("Nombre de coups :" + compteurCoup);
+    console.log(compteur);
+    if (compteur >= 12) {
+      textVictoire.textContent = "Bravo ! Vous avez gagné !";
+      textJeu.appendChild(textVictoire);
+    }
+  });
 });
+
+//--------------
+//click retourne la case

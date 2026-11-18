@@ -114,13 +114,18 @@ function generateTable(colGrille, rowGrille) {
   grilleJeu.appendChild(tbl);
 }
 
-//quand click jouer
-// random [2] parmi img
-
 const colGrille = 3;
 const rowGrille = 4;
 
-$("#jouer").on("click", function () {
+//reset la touche espace
+window.addEventListener("keydown", (e) => {
+  if (e.code === "Space" && e.target === document.body) {
+    e.preventDefault();
+  }
+});
+
+//fonction de jeu
+function play() {
   console.log("coucou");
   generateTable(colGrille, rowGrille);
   $("td").on("click", function () {
@@ -135,13 +140,16 @@ $("#jouer").on("click", function () {
       textJeu.appendChild(textVictoire);
     }
   });
+}
+
+//jouer sur click boutton
+$("#jouer").on("click", () => {
+  play();
 });
 
-//-----------
-//reset la partie
+//jouer sur press spacebar
 const spaceBar = document.addEventListener("keydown", (event) => {
-  if (event.code === "Space") {
-    console.log("space bar");
-    jouer();
-  }
+  console.log("space bar");
+  $("#grille table").remove();
+  play();
 });

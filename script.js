@@ -1,3 +1,7 @@
+const colGrille = 3;
+const rowGrille = 4;
+const theme = 0;
+
 var tableauTheme = [
   {
     nom: "legumes",
@@ -64,14 +68,10 @@ var tableauTheme = [
     nombreCartes: 26,
   },
 ];
-/*for (ligne of tableauCorrespondanceMemoryImage) {
+for (ligne of tableauTheme) {
   console.log(ligne.nom);
 }
-console.table(
-  tableauCorrespondanceMemoryImage[0].chemin +
-    "1" +
-    tableauCorrespondanceMemoryImage[0].extension,
-);*/
+console.table(tableauTheme[0].chemin + "1" + tableauTheme[0].extension);
 
 let compteur = 0;
 let compteurCoup = 0;
@@ -82,6 +82,9 @@ const textJeu = document.getElementById("textJeu");
 //----------------------
 //Function generer tablo
 function generateTable(colGrille, rowGrille, theme) {
+  let randomImg = Math.floor(Math.random() * tableauTheme[theme].nombreCartes);
+  console.log(randomImg);
+
   // crée un élément <table> et un élément <tbody>
   const grilleJeu = document.getElementById("grille");
   const tbl = document.createElement("table");
@@ -114,7 +117,7 @@ function generateTable(colGrille, rowGrille, theme) {
       cellImg.src =
         "" +
         tableauTheme[theme].chemin +
-        cell.id +
+        randomImg +
         tableauTheme[theme].extension +
         "";
       cellImg.alt = "carte " + tableauTheme[theme].nom; //FAIRE TAB DE ALT POUR CHAQUE THEME
@@ -133,9 +136,6 @@ function generateTable(colGrille, rowGrille, theme) {
   grilleJeu.appendChild(tbl);
 }
 
-const colGrille = 3;
-const rowGrille = 4;
-const theme = 0;
 //reset la touche espace
 window.addEventListener("keydown", (e) => {
   if (e.code === "Space" && e.target === document.body) {
@@ -149,7 +149,7 @@ function play() {
   generateTable(colGrille, rowGrille, theme);
 
   $("td").on("click", function () {
-    $(this).find("img").attr("src", imgPomme.src);
+    $(this).find("img").attr("src");
     console.log("Carte retournée");
     compteur++; //COMPTER PAR PAIRE ?
     compteurCoup++;

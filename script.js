@@ -81,6 +81,7 @@ function generateTable(colGrille, rowGrille) {
   const tbl = document.createElement("table");
   const tblBody = document.createElement("tbody");
 
+  id = 1;
   // création de toutes les cellules
   for (let i = 0; i < rowGrille; i++) {
     // crée une ligne de tableau
@@ -91,11 +92,9 @@ function generateTable(colGrille, rowGrille) {
       // dans le <td>, puis place le <td> à la fin de la ligne
       const cell = document.createElement("td");
 
-      id = 1;
-      for (let idTd = 1; idTd < j; idTd++) {
-        id++;
-        cell.id = id;
-      }
+      //id ++
+      cell.id = id;
+      id++;
 
       const cellImg = new Image();
       cellImg.src = "ressources/question.svg";
@@ -109,7 +108,6 @@ function generateTable(colGrille, rowGrille) {
     // ajoute la ligne à la fin du corps du tableau
     tblBody.appendChild(row);
   }
-
   // place le <tbody> dans le <table>
   tbl.appendChild(tblBody);
   // ajoute <table> dans <div grilleJeu>
@@ -139,5 +137,11 @@ $("#jouer").on("click", function () {
   });
 });
 
-//--------------
-//click retourne la case
+//-----------
+//reset la partie
+const spaceBar = document.addEventListener("keydown", (event) => {
+  if (event.code === "Space") {
+    console.log("space bar");
+    jouer();
+  }
+});

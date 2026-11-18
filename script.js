@@ -1,18 +1,18 @@
-var tableauCorrespondanceMemoryImage = [
+var tableauTheme = [
   {
     nom: "legumes",
     nomAffiche: "Légumes",
     img: "./ressources/memory-legume/memory_detail.png",
     chemin: "./ressources/memory-legume/",
-    extension: "svg",
-    nombreCartes: 8,
+    extension: ".svg",
+    nombreCartes: 6,
   },
   {
     nom: "animaux",
     nomAffiche: "Animaux",
     img: "./ressources/animaux/memory_detail_animaux.png",
     chemin: "./ressources/animaux/",
-    extension: "webp",
+    extension: ".webp",
     nombreCartes: 28,
   },
   {
@@ -20,7 +20,7 @@ var tableauCorrespondanceMemoryImage = [
     nomAffiche: "Animaux animés",
     img: "./ressources/animauxAnimes/memory_detail_animaux_animes.png",
     chemin: "./ressources/animauxAnimes/",
-    extension: "webp",
+    extension: ".webp",
     nombreCartes: 8,
   },
   {
@@ -28,7 +28,7 @@ var tableauCorrespondanceMemoryImage = [
     nomAffiche: "Animaux Domestiques",
     img: "./ressources/animauxdomestiques/memory_detail_animaux_domestiques.png",
     chemin: "./ressources/animauxdomestiques/",
-    extension: "jpg",
+    extension: ".jpg",
     nombreCartes: 10,
   },
   {
@@ -36,7 +36,7 @@ var tableauCorrespondanceMemoryImage = [
     nomAffiche: "Chiens",
     img: "./ressources/chiens/memory_details_chiens.png",
     chemin: "./ressources/chiens/",
-    extension: "webp",
+    extension: ".webp",
     nombreCartes: 23,
   },
   {
@@ -44,7 +44,7 @@ var tableauCorrespondanceMemoryImage = [
     nomAffiche: "Dinosaures",
     img: "./ressources/dinosaures/memory_detail_dinosaures.png",
     chemin: "./ressources/dinosaures/",
-    extension: "jpg",
+    extension: ".jpg",
     nombreCartes: 10,
   },
   {
@@ -52,7 +52,7 @@ var tableauCorrespondanceMemoryImage = [
     nomAffiche: "Dinosaures avec nom",
     img: "./ressources/dinosauresAvecNom/memory_details_dinosaures_avec_nom.png",
     chemin: "./ressources/dinosauresAvecNom/",
-    extension: "jpg",
+    extension: ".jpg",
     nombreCartes: 10,
   },
   {
@@ -60,12 +60,18 @@ var tableauCorrespondanceMemoryImage = [
     nomAffiche: "Lettre Scrablle",
     img: "./ressources/alphabet-scrabble/memory_detail_scrabble.png",
     chemin: "./ressources/alphabet-scrabble/",
-    extension: "png",
+    extension: ".png",
     nombreCartes: 26,
   },
 ];
-const imgPomme = new Image();
-imgPomme.src = "ressources/memory-legume/1.svg";
+/*for (ligne of tableauCorrespondanceMemoryImage) {
+  console.log(ligne.nom);
+}
+console.table(
+  tableauCorrespondanceMemoryImage[0].chemin +
+    "1" +
+    tableauCorrespondanceMemoryImage[0].extension,
+);*/
 
 let compteur = 0;
 let compteurCoup = 0;
@@ -75,7 +81,7 @@ const textJeu = document.getElementById("textJeu");
 
 //----------------------
 //Function generer tablo
-function generateTable(colGrille, rowGrille) {
+function generateTable(colGrille, rowGrille, theme) {
   // crée un élément <table> et un élément <tbody>
   const grilleJeu = document.getElementById("grille");
   const tbl = document.createElement("table");
@@ -96,9 +102,22 @@ function generateTable(colGrille, rowGrille) {
       cell.id = id;
       id++;
 
-      const cellImg = new Image();
-      cellImg.src = "ressources/question.svg";
-      cellImg.alt = "carte caché";
+      //initialise sur ?
+      const cellImgDos = new Image();
+      cellImgDos.src = "ressources/question.svg";
+      cellImgDos.alt = "carte caché";
+      cell.appendChild(cellImgDos);
+
+      cellImg = new Image();
+
+      // ajoute src et alt en fonction du theme
+      cellImg.src =
+        "" +
+        tableauTheme[theme].chemin +
+        cell.id +
+        tableauTheme[theme].extension +
+        "";
+      cellImg.alt = "carte " + tableauTheme[theme].nom; //FAIRE TAB DE ALT POUR CHAQUE THEME
 
       cell.appendChild(cellImg);
 
@@ -116,7 +135,7 @@ function generateTable(colGrille, rowGrille) {
 
 const colGrille = 3;
 const rowGrille = 4;
-
+const theme = 0;
 //reset la touche espace
 window.addEventListener("keydown", (e) => {
   if (e.code === "Space" && e.target === document.body) {
@@ -126,14 +145,15 @@ window.addEventListener("keydown", (e) => {
 
 //fonction de jeu
 function play() {
-  console.log("coucou");
-  generateTable(colGrille, rowGrille);
+  console.log("Début du jeu");
+  generateTable(colGrille, rowGrille, theme);
+
   $("td").on("click", function () {
     $(this).find("img").attr("src", imgPomme.src);
     console.log("Carte retournée");
     compteur++; //COMPTER PAR PAIRE ?
     compteurCoup++;
-    $("#compteur").text("Nombre de coups :" + compteurCoup);
+    $("#compteur").text("Nombre de coups :" + compteur);
     console.log(compteur);
     if (compteur >= 12) {
       textVictoire.textContent = "Bravo ! Vous avez gagné !";
@@ -142,14 +162,21 @@ function play() {
   });
 }
 
+//NE PAS TOUCHER
 //jouer sur click boutton
 $("#jouer").on("click", () => {
+  console.log("click jouer");
+  $("#grille table").remove();
+  compteur = 0;
+  $("#compteur").text("Nombre de coups :" + compteur);
   play();
 });
 
 //jouer sur press spacebar
-const spaceBar = document.addEventListener("keydown", (event) => {
+const spaceBar = document.addEventListener("keydown", () => {
   console.log("space bar");
   $("#grille table").remove();
+  compteur = 0;
+  $("#compteur").text("Nombre de coups :" + compteur);
   play();
 });

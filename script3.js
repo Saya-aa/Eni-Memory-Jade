@@ -159,7 +159,7 @@ melangeTab(tableauImgRandoms, tailleTableau);
 //fonction de jeu
 function play() {
   console.log("Début du jeu");
-  let compteurCoup = 1;
+  let compteurCoup = 0;
   generateTable(colGrille, rowGrille, theme);
   console.table(tableauImgRandoms);
 
@@ -169,13 +169,19 @@ function play() {
   let index2 = null;
   let idImg;
   let imgTabValue;
+  let blocage = false;
+  let tabCarteJoue = [];
 
   $("img").on("click", function (event) {
+    if (blocage) return;
+    if (tabCarteJoue.includes(idImg)) return;
     idImg = event.target.id;
     imgTabValue = tableauImgRandoms[event.target.id];
 
     console.log("index tab :" + idImg);
     console.log("value img:" + imgTabValue);
+
+    if (idImg === index1 || idImg === index2) return;
 
     if (img1 === null || img1 === 0) {
       img1 = imgTabValue;
@@ -187,7 +193,7 @@ function play() {
         tableauTheme[theme].extension +
         "";
       console.log(img1);
-    } else if (img1 !== null || img1 !== 0 || img2 === 0 || img2 === null) {
+    } else if (img1 !== null && img1 !== 0) {
       img2 = imgTabValue;
       index2 = idImg;
       document.getElementById(idImg).src =
@@ -196,7 +202,9 @@ function play() {
         imgTabValue +
         tableauTheme[theme].extension +
         "";
+
       if (img1 !== img2) {
+        blocage = true;
         setTimeout(() => {
           document.getElementById(index1).src = carteCache;
           console.log(img1);
@@ -206,21 +214,23 @@ function play() {
           img2 = 0;
           index1 = 0;
           index2 = 0;
-          compteurCoup--;
-          console.log("timer");
-        }, 3000);
+          blocage = false;
+        }, 1000);
       } else {
+        tabCarteJoue.push(imgTabValue);
+        console.table(tabCarteJoue);
+        compteurCoup++;
         img1 = 0;
         img2 = 0;
         index1 = 0;
         index2 = 0;
-        compteurCoup++;
       }
     }
-    $("#compteur").text("Nombre de coups : " + (compteurCoup - 1));
+    $("#compteur").text("Nombre de coups : " + compteurCoup);
 
     //if all carte retourné alors
-    if (compteurCoup >= 12) {
+
+    if (compteurCoup * 2 == tailleTableau) {
       textVictoire.textContent = "BRAVO ! VOUS AVEZ GAGNÉ";
     }
   });
@@ -254,19 +264,3 @@ const spaceBar = document.addEventListener("keydown", () => {
   $("#compteur").text("Nombre de coups :" + compteur);
   play();
 });
-
-//carte retourné
-//carte caché
-
-/*     //timer 3sec puis remet carte
-setTimeout(() => {
-    document.getElementById(idImg).src = carteCache;
-    console.log("timer");
-}, 3000);
-/*     if (compteurCoup % 2 !== 0) {
-    img1 = imgTabValue;
-    console.log(img1);
-    } else if (compteurCoup % 2 === 0) {
-        img2 = imgTabValue;
-        console.log(img2);
-        } */

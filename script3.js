@@ -77,6 +77,7 @@ function randomImg() {
 let theme = 0;
 let colGrille = 3;
 let rowGrille = 4;
+const carteCache = "ressources/question.svg";
 
 //tableau img random
 tailleTableau = tableauTheme[theme].nombreCartes * 2;
@@ -84,16 +85,17 @@ console.log(tailleTableau);
 
 let tableauImgRandoms = [];
 tableauImgRandoms.length = tailleTableau;
-
-for (let k = 1; k < tailleTableau + 1; k++) {
-  if (tableauImgRandoms[k % 2] !== 0) {
-    img = randomImg();
-    do {
+function imgTab(tailleTableau, tableauImgRandoms) {
+  for (let k = 1; k < tailleTableau + 1; k++) {
+    if (tableauImgRandoms[k % 2] !== 0) {
       img = randomImg();
-    } while (tableauImgRandoms.includes(img));
-    tableauImgRandoms[k] = img;
-    k++;
-    tableauImgRandoms[k] = img;
+      do {
+        img = randomImg();
+      } while (tableauImgRandoms.includes(img));
+      tableauImgRandoms[k] = img;
+      k++;
+      tableauImgRandoms[k] = img;
+    }
   }
 }
 
@@ -107,10 +109,6 @@ function melangeTab(tab, taille) {
   }
   return tab;
 }
-
-melangeTab(tableauImgRandoms, tailleTableau);
-
-console.table(tableauImgRandoms);
 
 //----------------------
 //Function generer tablo de jeu
@@ -134,22 +132,12 @@ function generateTable(colGrille, rowGrille, theme) {
 
       id++;
 
+      //initialise sur "?""
       const cellImgDos = new Image();
-      cellImgDos.src = "ressources/question.svg";
+      cellImgDos.src = carteCache;
       cellImgDos.alt = "carte caché";
       cellImgDos.id = id - 1;
       cell.appendChild(cellImgDos);
-
-      /*  cellImg = new Image();
-
-      cellImg.src =
-        "" +
-        tableauTheme[theme].chemin +
-        tableauImgRandoms[k] +
-        tableauTheme[theme].extension +
-        "";
-      cellImg.alt = "carte " + tableauTheme[theme].nom; //FAIRE TAB DE ALT POUR CHAQUE THEME
-      cell.appendChild(cellImg); */
 
       row.appendChild(cell);
     }
@@ -165,30 +153,75 @@ function generateTable(colGrille, rowGrille, theme) {
 
 const textVictoire = document.getElementById("textVictoire");
 
+imgTab(tailleTableau, tableauImgRandoms);
+melangeTab(tableauImgRandoms, tailleTableau);
+
 //fonction de jeu
 function play() {
   console.log("Début du jeu");
-  let compteurCoup = 0;
+  let compteurCoup = 1;
   generateTable(colGrille, rowGrille, theme);
+  console.table(tableauImgRandoms);
+
+  let img1 = null;
+  let index1 = null;
+  let img2 = null;
+  let index2 = null;
+  let idImg;
+  let imgTabValue;
+
   $("img").on("click", function (event) {
-    let idImg = event.target.id;
-    let imgTabValue = tableauImgRandoms[event.target.id];
+    idImg = event.target.id;
+    imgTabValue = tableauImgRandoms[event.target.id];
 
     console.log("index tab :" + idImg);
     console.log("value img:" + imgTabValue);
-    document.getElementById(idImg).src =
-      "" +
-      tableauTheme[theme].chemin +
-      imgTabValue +
-      tableauTheme[theme].extension +
-      "";
-    console.log("CLICK");
-    compteurCoup++;
-    $("#compteur").text("Nombre de coups : " + compteurCoup);
+
+    if (img1 === null || img1 === 0) {
+      img1 = imgTabValue;
+      index1 = idImg;
+      document.getElementById(idImg).src =
+        "" +
+        tableauTheme[theme].chemin +
+        imgTabValue +
+        tableauTheme[theme].extension +
+        "";
+      console.log(img1);
+    } else if (img1 !== null || img1 !== 0 || img2 === 0 || img2 === null) {
+      img2 = imgTabValue;
+      index2 = idImg;
+      document.getElementById(idImg).src =
+        "" +
+        tableauTheme[theme].chemin +
+        imgTabValue +
+        tableauTheme[theme].extension +
+        "";
+      if (img1 !== img2) {
+        setTimeout(() => {
+          document.getElementById(index1).src = carteCache;
+          console.log(img1);
+          document.getElementById(index2).src = carteCache;
+          console.log(img2);
+          img1 = 0;
+          img2 = 0;
+          index1 = 0;
+          index2 = 0;
+          compteurCoup--;
+          console.log("timer");
+        }, 3000);
+      } else {
+        img1 = 0;
+        img2 = 0;
+        index1 = 0;
+        index2 = 0;
+        compteurCoup++;
+      }
+    }
+    $("#compteur").text("Nombre de coups : " + (compteurCoup - 1));
+
     //if all carte retourné alors
     if (compteurCoup >= 12) {
       textVictoire.textContent = "BRAVO ! VOUS AVEZ GAGNÉ";
-      console.log("Gagné");
     }
   });
 }
@@ -198,6 +231,7 @@ function play() {
 $("#jouer").on("click", () => {
   console.log("click jouer");
   $("#grille table").remove();
+  melangeTab(tableauImgRandoms, tailleTableau);
   compteur = 0;
   $("#compteur").text("Nombre de coups :" + compteur);
   play();
@@ -214,13 +248,25 @@ window.addEventListener("keydown", (e) => {
 const spaceBar = document.addEventListener("keydown", () => {
   console.log("space bar");
   $("#grille table").remove();
+  melangeTab(tableauImgRandoms, tailleTableau);
+  console.table(tableauImgRandoms);
   compteur = 0;
   $("#compteur").text("Nombre de coups :" + compteur);
   play();
 });
 
-/*       //initialise sur "?""
+//carte retourné
+//carte caché
 
-      // ajoute src et alt en fonction du theme
-
-      */
+/*     //timer 3sec puis remet carte
+setTimeout(() => {
+    document.getElementById(idImg).src = carteCache;
+    console.log("timer");
+}, 3000);
+/*     if (compteurCoup % 2 !== 0) {
+    img1 = imgTabValue;
+    console.log(img1);
+    } else if (compteurCoup % 2 === 0) {
+        img2 = imgTabValue;
+        console.log(img2);
+        } */

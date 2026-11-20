@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Inscription</title>
     <link rel="stylesheet" href="style.css" />
+    <script src="inscription.js" defer></script>
   </head>
   <body>
     <div class="entete">
@@ -22,18 +23,20 @@
     </div>
     <fieldset class="blackBox">
       <legend>Inscrivez-vous.</legend>
-      <form action="" method="get">
-        <label for="nameUser">Nom d'utilisateur*</label>
-        <br />
-        <input
-          id="nameUser"
-          name="nameUser"
-          title="Entrez votre nom d'utilisateur"
-          type="text"
-          placeholder="3 caractères minimum"
-          pattern="^[A-Za-zÀ-ÖØ-öø-ÿ0-9]+${3,}"
-          required
-        />
+      <form action="" method="">
+        <div id="userName">
+          <label for="nameUser">Nom d'utilisateur*</label>
+          <br />
+          <input
+            id="nameUser"
+            name="nameUser"
+            title="Entrez votre nom d'utilisateur"
+            type="text"
+            placeholder="3 caractères minimum"
+            pattern="^[A-Za-zÀ-ÖØ-öø-ÿ0-9]+${3,}"
+            required
+          />
+        </div>
         <hr class="separator" />
 
         <label for="email">Entrez votre email*</label>
@@ -49,7 +52,12 @@
         />
         <hr class="separator" />
         <label for="mdp">Mot de passe*</label>
-        <button type="button" name="buttonMdp" class="btn-fieldset">
+        <button
+          type="button"
+          name="buttonMdp"
+          class="btn-fieldset"
+          id="btn-visibilite-password"
+        >
           Afficher
         </button>
         <br />
@@ -69,13 +77,18 @@
           minimum.
         </p>
         <label for="mdp">Confirmez votre de passe*</label>
-        <button type="button" name="buttonMdp" class="btn-fieldset">
+        <button
+          type="button"
+          name="buttonMdp"
+          class="btn-fieldset"
+          id="btn-visibilite-password-2"
+        >
           Afficher
         </button>
         <br />
         <input
-          id="mdp"
-          name="mdp"
+          id="mdpConfirm"
+          name="mdp2"
           title="Confirmez votre mot de passe"
           placeholder="Confirmez votre  mot de passe"
           type="password"
@@ -84,7 +97,9 @@
         />
         <hr class="separator" />
         <div class="btn">
-          <button type="submit" class="btn-fieldset">Création du compte</button>
+          <button type="submit" class="btn-fieldset" id="creaCompte">
+            Création du compte
+          </button>
           <button type="reset" class="btn-fieldset">Annuler</button>
         </div>
       </form>

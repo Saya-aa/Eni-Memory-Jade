@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Profil</title>
     <link rel="stylesheet" href="style.css" />
-    <script src="scriptProfil.js"></script>
+    <script src="scriptProfil.js" defer></script>
   </head>
   <body>
     <div class="entete">
@@ -44,9 +44,9 @@
           required
         />
         <hr class="separator" />
-
-        <label for="email">Email</label>
         <br />
+        <label for="email">Email</label>
+
         <input
           id="email"
           name="email"
@@ -75,7 +75,7 @@
           src=""
           alt="detail du thème choisis"
         /><!--img de l'option choisis-->
-
+        <br />
         <p>Taille du Memory</p>
         <select class="btn-fieldset">
           <option value="3">--Choisir taille--</option>

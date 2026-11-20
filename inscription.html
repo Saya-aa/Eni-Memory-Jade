@@ -34,7 +34,7 @@
           pattern="^[A-Za-zÀ-ÖØ-öø-ÿ0-9]+${3,}"
           required
         />
-        <br />
+        <hr class="separator" />
 
         <label for="email">Entrez votre email*</label>
         <br />
@@ -47,8 +47,11 @@
           pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"
           required
         />
-        <br />
+        <hr class="separator" />
         <label for="mdp">Mot de passe*</label>
+        <button type="button" name="buttonMdp" class="btn-fieldset">
+          Afficher
+        </button>
         <br />
         <input
           id="mdp"
@@ -59,12 +62,16 @@
           required
           pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{6,}"
         />
-        <button type="button" name="buttonMdp">Afficher</button>
+        <hr class="separator" />
+
         <p>
           Pas d'espace. Au moins un symbole, un chiffre, ainsi que 6 caractères
           minimum.
         </p>
         <label for="mdp">Confirmez votre de passe*</label>
+        <button type="button" name="buttonMdp" class="btn-fieldset">
+          Afficher
+        </button>
         <br />
         <input
           id="mdp"
@@ -75,9 +82,11 @@
           required
           pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{6,}"
         />
-        <br />
-        <button type="submit">Création du compte</button>
-        <button type="reset">Annuler</button>
+        <hr class="separator" />
+        <div class="btn">
+          <button type="submit" class="btn-fieldset">Création du compte</button>
+          <button type="reset" class="btn-fieldset">Annuler</button>
+        </div>
       </form>
       <p>* Champ obligatoire</p>
     </fieldset>

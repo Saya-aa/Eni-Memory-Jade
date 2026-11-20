@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Profil</title>
     <link rel="stylesheet" href="style.css" />
+    <script src="scriptProfil.js"></script>
   </head>
   <body>
     <div class="entete">
@@ -17,11 +18,13 @@
         <a href="jouer.html">Jouer</a>
       </nav>
     </div>
-    <h2>PROFIL</h2>
+
     <!--Liste information user + boutton modifier ??????-->
     <!--liste partie jouer-->
-    <div class="blackBox">
-      <fieldset>
+    <div>
+      <fieldset class="blackBox">
+        <legend>PROFIL</legend>
+        <img src="ressources/question.svg" id="pdp" />
         <label>Modifier votre photo de profil </label>
         <input
           type="file"
@@ -40,7 +43,7 @@
           pattern="^[A-Za-zÀ-ÖØ-öø-ÿ0-9]+${3,}"
           required
         />
-        <br />
+        <hr class="separator" />
 
         <label for="email">Email</label>
         <br />
@@ -53,51 +56,57 @@
           pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"
           required
         />
-        <br />
+        <hr class="separator" />
 
         <p>Choix du Memory</p>
-        <select>
-          <option value="">--Choisir memory--</option>
-          <option value=""></option>
-          <option value=""></option>
-          <option value=""></option>
-          <option value=""></option>
-          <option value=""></option>
-          <option value=""></option>
-          <option value=""></option>
-          <option value=""></option>
+        <select class="btn-fieldset" id="selectMemory">
+          <option value="" selected>--Choisir memory--</option>
+          <option value="0">Légumes</option>
+          <option value="1">Animaux</option>
+          <option value="2">Animaux animés</option>
+          <option value="3">Animaux Domestiques</option>
+          <option value="4">Chiens</option>
+          <option value="5">Dinosaures</option>
+          <option value="6">Dinosaures avec nom</option>
+          <option value="7">Lettre Scrabble</option>
         </select>
-        <img /><!--img de l'option choisis-->
+        <img
+          id="imgDetail"
+          src=""
+          alt="detail du thème choisis"
+        /><!--img de l'option choisis-->
 
         <p>Taille du Memory</p>
-        <select>
-          <option value="">--Choisir taille--</option>
-          <option value="">4*3</option>
-          <option value="">8*6</option>
-          <option value="">16*12</option>
+        <select class="btn-fieldset">
+          <option value="3">--Choisir taille--</option>
+          <option value="0">4*3</option>
+          <option value="1">8*6</option>
+          <option value="2">16*12</option>
         </select>
         <br />
-        <button type="submit">Enregistrez Option</button>
+        <div class="btn">
+          <button type="submit" class="btn-fieldset">Enregistrez Option</button>
+        </div>
+        <h2>Derniers meilleurs scores :</h2>
+        <!--TD par partie joué ou jSON ???-->
+        <table>
+          <tr>
+            Pseudo
+          </tr>
+          <tr>
+            Score
+          </tr>
+          <tr>
+            Taille
+          </tr>
+          <tr>
+            Choix Memory
+          </tr>
+          <tr>
+            Date
+          </tr>
+        </table>
       </fieldset>
-      <h2>Derniers meilleurs scores :</h2>
-      <!--TD par partie joué ou jSON ???-->
-      <table>
-        <tr>
-          Pseudo
-        </tr>
-        <tr>
-          Score
-        </tr>
-        <tr>
-          Taille
-        </tr>
-        <tr>
-          Choix Memory
-        </tr>
-        <tr>
-          Date
-        </tr>
-      </table>
     </div>
   </body>
 </html>

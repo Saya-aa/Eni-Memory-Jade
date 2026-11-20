@@ -23,12 +23,13 @@
       <div>
         <h2>Connexion</h2>
         <label for="signIn">Pas encore de compte ?</label>
-        <button id="signIn" name="signIn"><a href="inscription.html">Créer un compte</a></button>
+        <button id="signIn" name="signIn" ><a href="inscription.html" class="compte btn-fieldset">Créer un compte</a></button>
         <fieldset class="blackBox">
           <legend>Accès à mon compte</legend>
           <form action="" method="get">
             <!--METTRE ACTION-->
             <label for="email">Email :</label>
+            <br />
             <input
               id="email"
               name="email"
@@ -37,23 +38,28 @@
               placeholder="exemple@email.fr"
               required
             />
+            <hr class="separator"/>
             <br />
             <label for="mdp">Mot de passe :</label>
+            <button type="button" name="buttonMdp" class="btn-fieldset">Afficher</button>
+            <br />
             <input
               id="mdp"
               name="mdp"
               title="Renseigner votre mot de passe"
               type="password"
+              placeholder="Votre mot de passe"
               required
               minlength="8"
             />
-            <button type="button" name="buttonMdp">Afficher</button>
-            <br />
+            <hr class="separator"/>
             <label for="connectON">Rester connecté sur cet appareil</label>
             <input id="connectON" name="connectON" type="checkbox" />
             <br />
-            <button>Se connecter</button>
-            <button>Mot de passe oublié ?</button>
+            <div class="btn">
+            <button class="btn-fieldset" >Se connecter</button>
+            <button class="btn-fieldset" >Mot de passe oublié ?</button>
+            </div>
           </form>
         </fieldset>       
     </main>

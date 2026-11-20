@@ -2,7 +2,6 @@ body {
   background: #8e58b0;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  min-height: 100%;
   background: linear-gradient(
     360deg,
     rgba(142, 88, 176, 1) 0%,
@@ -16,13 +15,13 @@ body {
 /*color*/
 a {
   cursor: pointer;
-  color: rgb(0, 0, 0);
+  color: antiquewhite;
   text-decoration: none;
   padding: 1vw;
 }
 
 a:hover {
-  color: rgb(216, 150, 28);
+  color: rgba(230, 154, 48, 1);
 }
 
 nav {
@@ -52,6 +51,8 @@ img {
 }
 
 .blackBox {
+  display: flex;
+  flex-direction: column;
   background-color: black;
   border-style: none;
   border-radius: 2%;
@@ -75,4 +76,63 @@ td {
   text-align: center;
   border: 1px solid rgba(230, 154, 48, 1);
   cursor: pointer;
+}
+
+#grille {
+  display: flex;
+  justify-content: center;
+}
+
+.box {
+  border: none;
+}
+
+.btn-fieldset {
+  width: 20%;
+  border-radius: 5px;
+  border-style: none;
+  padding: 1%;
+  margin-right: 2%;
+  background-color: rgba(230, 154, 48, 1);
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+.btn {
+  display: flex;
+  justify-content: center;
+}
+
+.compte {
+  color: black;
+}
+
+#pdp {
+  align-self: center;
+  border-radius: 50%;
+  border-style: groove;
+  padding: 2%;
+  border-color: rgba(230, 154, 48, 1);
+  width: 5%;
+  height: 5%;
+  margin-bottom: 3%;
+}
+
+input {
+  background: none;
+  border-style: none;
+}
+
+.separator {
+  width: 100%;
+  border: 1px solid rgba(230, 154, 48, 1);
+}
+
+select {
+  width: 15%;
+}
+#imgDetail {
+  display: none;
 }

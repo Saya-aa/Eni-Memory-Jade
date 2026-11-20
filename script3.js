@@ -58,7 +58,7 @@ var tableauTheme = [
   },
   {
     nom: "alphabetScrabble",
-    nomAffiche: "Lettre Scrablle",
+    nomAffiche: "Lettre Scrabble",
     img: "./ressources/alphabet-scrabble/memory_detail_scrabble.png",
     chemin: "./ressources/alphabet-scrabble/",
     extension: ".png",
@@ -159,7 +159,7 @@ melangeTab(tableauImgRandoms, tailleTableau);
 //fonction de jeu
 function play() {
   console.log("Début du jeu");
-  let compteurCoup = 0;
+  let compteurPaire = 0;
   generateTable(colGrille, rowGrille, theme);
   console.table(tableauImgRandoms);
 
@@ -220,18 +220,18 @@ function play() {
         tabCarteJoue.push(index1);
         tabCarteJoue.push(index2);
         console.table(tabCarteJoue);
-        compteurCoup++;
+        compteurPaire++;
         img1 = null;
         img2 = null;
         index1 = null;
         index2 = null;
       }
     }
-    $("#compteur").text("Nombre de coups : " + compteurCoup);
+    $("#compteur").text("Nombre de coups : " + compteurPaire);
 
     //if all carte retourné alors
 
-    if (compteurCoup * 2 == tailleTableau) {
+    if (compteurPaire * 2 == tailleTableau) {
       textVictoire.textContent = "BRAVO ! VOUS AVEZ GAGNÉ";
     }
   });
@@ -243,8 +243,8 @@ $("#jouer").on("click", () => {
   console.log("click jouer");
   $("#grille table").remove();
   melangeTab(tableauImgRandoms, tailleTableau);
-  compteur = 0;
-  $("#compteur").text("Nombre de coups :" + compteur);
+  compteurPaire = 0;
+  $("#compteur").text("Nombre de coups :" + compteurPaire);
   play();
 });
 
@@ -261,7 +261,7 @@ const spaceBar = document.addEventListener("keydown", () => {
   $("#grille table").remove();
   melangeTab(tableauImgRandoms, tailleTableau);
   console.table(tableauImgRandoms);
-  compteur = 0;
-  $("#compteur").text("Nombre de coups :" + compteur);
+  compteurPaire = 0;
+  $("#compteur").text("Nombre de coups :" + compteurPaire);
   play();
 });

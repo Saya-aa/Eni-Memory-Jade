@@ -174,8 +174,8 @@ function play() {
 
   $("img").on("click", function (event) {
     if (blocage) return;
-    if (tabCarteJoue.includes(idImg)) return;
     idImg = event.target.id;
+    if (tabCarteJoue.includes(idImg)) return;
     imgTabValue = tableauImgRandoms[event.target.id];
 
     console.log("index tab :" + idImg);
@@ -183,7 +183,7 @@ function play() {
 
     if (idImg === index1 || idImg === index2) return;
 
-    if (img1 === null || img1 === 0) {
+    if (img1 === null) {
       img1 = imgTabValue;
       index1 = idImg;
       document.getElementById(idImg).src =
@@ -193,7 +193,7 @@ function play() {
         tableauTheme[theme].extension +
         "";
       console.log(img1);
-    } else if (img1 !== null && img1 !== 0) {
+    } else if (img1 !== null) {
       img2 = imgTabValue;
       index2 = idImg;
       document.getElementById(idImg).src =
@@ -210,20 +210,21 @@ function play() {
           console.log(img1);
           document.getElementById(index2).src = carteCache;
           console.log(img2);
-          img1 = 0;
-          img2 = 0;
-          index1 = 0;
-          index2 = 0;
+          img1 = null;
+          img2 = null;
+          index1 = null;
+          index2 = null;
           blocage = false;
         }, 1000);
       } else {
-        tabCarteJoue.push(imgTabValue);
+        tabCarteJoue.push(index1);
+        tabCarteJoue.push(index2);
         console.table(tabCarteJoue);
         compteurCoup++;
-        img1 = 0;
-        img2 = 0;
-        index1 = 0;
-        index2 = 0;
+        img1 = null;
+        img2 = null;
+        index1 = null;
+        index2 = null;
       }
     }
     $("#compteur").text("Nombre de coups : " + compteurCoup);
